@@ -199,15 +199,13 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Whitespace
+vim.o.wrap = false
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.list = true
 vim.o.backspace = 'indent,eol,start'
-
--- Set highlight on search
-vim.o.hlsearch = false
 
 -- Highlight current line
 vim.o.cursorline = true
