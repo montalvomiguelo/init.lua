@@ -5,5 +5,6 @@
 return {
   {
     'tpope/vim-surround',
+    'mattn/emmet-vim',
   },
 }
