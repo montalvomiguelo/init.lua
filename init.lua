@@ -207,6 +207,14 @@ vim.o.expandtab = true
 vim.o.list = true
 vim.o.backspace = 'indent,eol,start'
 
+-- Highlight problematic whitespace
+vim.opt.listchars = {
+  tab = '  ',       -- a tab should display as "  "
+  trail = '.',      -- show trailing spaces as dots
+  extends = '>',    -- The character to show in the last column when wrap is off and the line continues beyond the right of the screen
+  precedes = '<'    -- The character to show in the last column when wrap is off and the line continues beyond the left of the screen
+}
+
 -- Highlight current line
 vim.o.cursorline = true
 
@@ -294,7 +302,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
