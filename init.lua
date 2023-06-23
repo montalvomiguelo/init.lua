@@ -254,6 +254,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- No gui cursor
+vim.o.guicursor = ''
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
