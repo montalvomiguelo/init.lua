@@ -6,5 +6,6 @@ return {
   {
     'tpope/vim-surround',
     'mattn/emmet-vim',
+    'bronson/vim-trailing-whitespace',
   },
 }
