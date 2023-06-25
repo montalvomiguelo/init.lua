@@ -167,10 +167,10 @@ vim.o.backspace = 'indent,eol,start'
 
 -- Highlight problematic whitespace
 vim.opt.listchars = {
-  tab = '  ',       -- a tab should display as "  "
-  trail = '.',      -- show trailing spaces as dots
-  extends = '>',    -- The character to show in the last column when wrap is off and the line continues beyond the right of the screen
-  precedes = '<'    -- The character to show in the last column when wrap is off and the line continues beyond the left of the screen
+  tab = '  ', -- a tab should display as "  "
+  trail = '.', -- show trailing spaces as dots
+  extends = '>', -- The character to show in the last column when wrap is off and the line continues beyond the right of the screen
+  precedes = '<', -- The character to show in the last column when wrap is off and the line continues beyond the left of the screen
 }
 
 -- Highlight current line

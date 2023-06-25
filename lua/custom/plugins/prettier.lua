@@ -1,9 +1,9 @@
 return {
   'MunifTanjim/prettier.nvim',
   config = function()
-    local prettier = require('prettier')
+    local prettier = require 'prettier'
 
-    prettier.setup({
+    prettier.setup {
       bin = 'prettierd', -- or `'prettier'` (v0.23.3+)
       filetypes = {
         'css',
@@ -17,6 +17,6 @@ return {
         'yaml',
         'liquid',
       },
-    })
+    }
   end,
 }
