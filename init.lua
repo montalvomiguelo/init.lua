@@ -142,7 +142,24 @@ require('lazy').setup({
   },
 
   { import = 'custom.plugins' },
-}, {})
+}, {
+  ui = {
+    icons = {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
+  },
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
