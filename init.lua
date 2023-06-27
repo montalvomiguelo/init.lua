@@ -91,7 +91,11 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      require('onedark').setup {
+        code_style = {
+          comments = 'none',
+        },
+      }
     end,
   },
 
@@ -194,11 +198,12 @@ vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
+-- Set colorscheme
+vim.cmd [[colorscheme onedark]]
+vim.o.termguicolors = true
+
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
 
 -- No gui cursor
 vim.o.guicursor = ''
