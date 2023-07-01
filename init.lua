@@ -175,14 +175,6 @@ vim.o.cursorline = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -204,9 +196,6 @@ vim.o.timeoutlen = 300
 -- Set colorscheme
 vim.cmd [[colorscheme onedark]]
 vim.o.termguicolors = true
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
 
 -- No gui cursor
 vim.o.guicursor = ''
@@ -451,6 +440,3 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
