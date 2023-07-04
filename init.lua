@@ -88,12 +88,13 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'folke/tokyonight.nvim',
     priority = 1000,
     config = function()
-      require('onedark').setup {
-        code_style = {
-          comments = 'none',
+      require('tokyonight').setup {
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
         },
       }
     end,
@@ -194,7 +195,7 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 -- Set colorscheme
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme tokyonight]]
 vim.o.termguicolors = true
 
 -- No gui cursor
