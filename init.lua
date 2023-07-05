@@ -20,6 +20,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
@@ -196,7 +199,6 @@ vim.o.timeoutlen = 300
 
 -- Set colorscheme
 vim.cmd [[colorscheme tokyonight]]
-vim.o.termguicolors = true
 
 -- No gui cursor
 vim.o.guicursor = ''
