@@ -209,6 +209,9 @@ vim.o.guicursor = ''
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Clear search result highlight
+vim.keymap.set('n', '<C-l>', '<Cmd>nohlsearch<CR><C-l>', { silent = true, noremap = true })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
