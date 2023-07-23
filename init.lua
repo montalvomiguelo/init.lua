@@ -95,6 +95,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require('tokyonight').setup {
+        style = 'moon',
         styles = {
           comments = { italic = false },
           keywords = { italic = false },
@@ -446,3 +447,6 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
