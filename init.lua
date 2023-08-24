@@ -90,17 +90,18 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
+    -- Theme
     'folke/tokyonight.nvim',
     priority = 1000,
+    opts = {
+      style = 'moon',
+      styles = {
+        comments = { italic = false },
+        keywords = { italic = false },
+      },
+    },
     config = function()
-      require('tokyonight').setup {
-        style = 'moon',
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-        },
-      }
+      vim.cmd [[colorscheme tokyonight]]
     end,
   },
 
@@ -197,9 +198,6 @@ vim.wo.signcolumn = 'yes'
 vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
-
--- Set colorscheme
-vim.cmd [[colorscheme tokyonight]]
 
 -- No gui cursor
 vim.o.guicursor = ''
