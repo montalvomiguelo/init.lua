@@ -21,7 +21,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -154,17 +154,17 @@ require('lazy').setup({
 })
 
 -- [[ Setting options ]]
--- See `:help vim.o`
+-- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 
 -- Whitespace
-vim.o.wrap = false
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
-vim.o.expandtab = true
-vim.o.list = true
-vim.o.backspace = 'indent,eol,start'
+vim.opt.wrap = false
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.list = true
+vim.opt.backspace = 'indent,eol,start'
 
 -- Highlight problematic whitespace
 vim.opt.listchars = {
@@ -175,32 +175,32 @@ vim.opt.listchars = {
 }
 
 -- Highlight current line
-vim.o.cursorline = true
+vim.opt.cursorline = true
 
 -- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 
 -- No gui cursor
-vim.o.guicursor = ''
+vim.opt.guicursor = ''
 
 -- [[ Basic Keymaps ]]
 
