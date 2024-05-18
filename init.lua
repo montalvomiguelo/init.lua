@@ -213,6 +213,9 @@ require('lazy').setup({
           end,
         },
       }
+
+      -- After setting up mason-lspconfig you may set up servers via lspconfig
+      require('lspconfig').shopify_theme_ls.setup {}
     end,
   },
 
