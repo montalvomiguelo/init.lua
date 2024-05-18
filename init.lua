@@ -123,7 +123,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       { 'folke/neodev.nvim', opts = {} },
@@ -141,11 +141,7 @@ require('lazy').setup({
           -- In this case, we create a function that lets us more easily define mappings specific
           -- for LSP related items. It sets the mode, buffer and description for us each time.
           local nmap = function(keys, func, desc)
-            if desc then
-              desc = 'LSP: ' .. desc
-            end
-
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
+            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
           nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -344,9 +340,9 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'fzf')
 
       -- See `:help telescope.builtin`
-      vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-      vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>/', function()
+      vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+      vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>sb', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
@@ -390,6 +386,8 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
 }, {
+  -- If you are using a Nerd Font: set icons to an empty table which will use the
+  -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
   ui = {
     icons = {
       cmd = '⌘',
