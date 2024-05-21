@@ -38,6 +38,9 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
+-- Search
+vim.opt.grepprg = 'rg --vimgrep'
+
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -338,10 +341,24 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy file, buffer, mru, tag, etc finder
-  { 'ctrlpvim/ctrlp.vim' },
+  {
+    'ctrlpvim/ctrlp.vim',
+    init = function()
+      vim.g.ctrlp_user_command = 'rg %s --files'
+      vim.g.ctrlp_use_caching = 0
+    end,
+  },
 
   -- Use :Ack command for real-time grep
-  { 'mileszs/ack.vim' },
+  {
+    'mileszs/ack.vim',
+    keys = {
+      { '<leader>F', ':Ack!<Space>', mode = 'n', desc = '[S]earch by [G]rep' },
+    },
+    init = function()
+      vim.g.ackprg = 'rg --vimgrep'
+    end,
+  },
 
   {
     -- Highlight, edit, and navigate code
