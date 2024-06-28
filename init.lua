@@ -74,6 +74,14 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- Git keymaps
+vim.keymap.set('n', '<leader>gb', '<Cmd>Git blame<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gs', '<Cmd>Git<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gd', '<Cmd>Gdiff<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gl', '<Cmd>Gclog<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gc', '<Cmd>Git commit<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gp', '<Cmd>Git push<CR>', { silent = true })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
