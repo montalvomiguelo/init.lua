@@ -339,6 +339,7 @@ require('lazy').setup({
     init = function()
       vim.cmd.colorscheme 'tokyonight-moon'
     end,
+    version = '3.0.1',
   },
 
   -- "gc" to comment visual regions/lines
