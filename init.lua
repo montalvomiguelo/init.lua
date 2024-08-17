@@ -356,7 +356,7 @@ require('lazy').setup({
 
   -- Use :Ack command for real-time grep
   {
-    'mileszs/ack.vim',
+    'montalvomiguelo/ack.vim',
     keys = {
       { '<leader>F', ':Ack!<Space>', mode = 'n', desc = '[S]earch by [G]rep' },
     },
