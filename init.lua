@@ -242,7 +242,7 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 1000,
+          -- timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
@@ -336,6 +336,12 @@ require('lazy').setup({
     -- Theme
     'folke/tokyonight.nvim',
     priority = 1000,
+    opts = {
+      styles = {
+        comments = { italic = false },
+        keywords = { italic = false },
+      },
+    },
     init = function()
       vim.cmd.colorscheme 'tokyonight-moon'
     end,
