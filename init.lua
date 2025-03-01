@@ -341,13 +341,14 @@ require('lazy').setup({
     -- Theme
     'folke/tokyonight.nvim',
     priority = 1000,
-    opts = {
-      styles = {
-        comments = { italic = false },
-        keywords = { italic = false },
-      },
-    },
-    init = function()
+    config = function()
+      require('tokyonight').setup {
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
+        },
+      }
+
       vim.cmd.colorscheme 'tokyonight-moon'
     end,
     version = '3.0.1',
