@@ -469,10 +469,9 @@ if vim.g.vscode then
   -- VSCode-specific keymaps for search and navigation
   vim.keymap.set('n', '<leader><space>', '<cmd>Find<cr>')
   vim.keymap.set('n', '<leader>F', [[<cmd>lua require('vscode').action('workbench.action.findInFiles')<cr>]])
-  -- vim.keymap.set('n', '<leader>ss', [[<cmd>lua require('vscode').action('workbench.action.gotoSymbol')<cr>]])
   vim.keymap.set('n', '<leader>rn', "<Cmd>call VSCodeNotify('editor.action.rename')<CR>")
   vim.keymap.set('n', '<leader>ca', "<Cmd>call VSCodeNotify('editor.action.quickFix')<CR>")
-  vim.keymap.set('n', 'gr', "<Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>")
+  vim.keymap.set('n', 'gr', "<Cmd>call VSCodeNotify('editor.action.referenceSearch.trigger')<CR>")
   vim.keymap.set('n', 'gI', "<Cmd>call VSCodeNotify('editor.action.goToImplementation')<CR>")
   vim.keymap.set('n', '<leader>D', "<Cmd>call VSCodeNotify('editor.action.goToTypeDefinition')<CR>")
   vim.keymap.set('n', 'gD', "<Cmd>call VSCodeNotify('editor.action.goToDeclaration')<CR>")
