@@ -5,6 +5,7 @@
 return {
   {
     'tpope/vim-surround',
+    'tpope/vim-unimpaired',
     'github/copilot.vim',
     'bronson/vim-trailing-whitespace',
   },
