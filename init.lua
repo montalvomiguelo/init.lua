@@ -105,6 +105,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+--[[ VSCode plugins ]]
+local enabled = {
+  'lazy.nvim',
+  'vim-surround',
+  'vim-unimpaired',
+}
+
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -443,7 +450,35 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+
+  -- VSCode specific config
+  checker = { enabled = not vim.g.vscode, notify = not vim.g.vscode },
+  change_detection = { enabled = not vim.g.vscode, notify = not vim.g.vscode },
+  defaults = {
+    cond = function(plugin)
+      if vim.g.vscode then
+        return vim.tbl_contains(enabled, plugin.name) or plugin.vscode
+      end
+      return true
+    end,
+  },
 })
+
+-- [[ VSCode specifig keymaps ]]
+if vim.g.vscode then
+  -- VSCode-specific keymaps for search and navigation
+  vim.keymap.set('n', '<leader><space>', '<cmd>Find<cr>')
+  vim.keymap.set('n', '<leader>F', [[<cmd>lua require('vscode').action('workbench.action.findInFiles')<cr>]])
+  -- vim.keymap.set('n', '<leader>ss', [[<cmd>lua require('vscode').action('workbench.action.gotoSymbol')<cr>]])
+
+  -- Keep undo/redo lists in sync with VsCode
+  vim.keymap.set('n', 'u', "<Cmd>call VSCodeNotify('undo')<CR>")
+  vim.keymap.set('n', '<C-r>', "<Cmd>call VSCodeNotify('redo')<CR>")
+
+  -- Navigate VSCode tabs like lazyvim buffers
+  -- vim.keymap.set('n', '<S-h>', "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
+  -- vim.keymap.set('n', '<S-l>', "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
