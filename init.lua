@@ -452,7 +452,7 @@ require('lazy').setup({
   },
 
   -- VSCode specific config
-  checker = { enabled = not vim.g.vscode, notify = not vim.g.vscode },
+  checker = { notify = not vim.g.vscode },
   change_detection = { enabled = not vim.g.vscode, notify = not vim.g.vscode },
   defaults = {
     cond = function(plugin)
