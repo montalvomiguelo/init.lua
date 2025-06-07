@@ -80,13 +80,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.hl.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
   callback = function()
     vim.hl.on_yank()
   end,
-  group = highlight_group,
-  pattern = '*',
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
