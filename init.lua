@@ -450,6 +450,22 @@ require('lazy').setup({
     },
   },
 
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        'gzip',
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
+
   -- VSCode specific config
   checker = { enabled = not vim.g.vscode, notify = false },
   change_detection = { enabled = not vim.g.vscode },
