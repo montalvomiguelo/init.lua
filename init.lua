@@ -479,7 +479,7 @@ require('lazy').setup({
   },
 })
 
--- [[ VSCode specifig keymaps ]]
+-- [[ VSCode specific keymaps ]]
 if vim.g.vscode then
   -- VSCode-specific keymaps for search and navigation
   vim.keymap.set('n', '<leader><space>', '<cmd>Find<cr>')
