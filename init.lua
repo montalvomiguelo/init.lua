@@ -111,6 +111,15 @@ local enabled = {
   'vim-unimpaired',
 }
 
+-- [[ VSCode overrides ]]
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'VeryLazy',
+  group = vim.api.nvim_create_augroup('VSCode', { clear = true }),
+  callback = function()
+    vim.api.nvim_exec_autocmds('User', { pattern = 'VSCodeOverrides', modeline = false })
+  end,
+})
+
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -477,15 +486,6 @@ require('lazy').setup({
       return true
     end,
   },
-})
-
--- [[ VSCode specific overrides ]]
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'VeryLazy',
-  group = vim.api.nvim_create_augroup('VSCode', { clear = true }),
-  callback = function()
-    vim.api.nvim_exec_autocmds('User', { pattern = 'VSCodeOverrides', modeline = false })
-  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
