@@ -479,31 +479,14 @@ require('lazy').setup({
   },
 })
 
--- [[ VSCode specific keymaps ]]
-if vim.g.vscode then
-  -- VSCode-specific keymaps for search and navigation
-  vim.keymap.set('n', '<leader><space>', '<cmd>Find<cr>')
-  vim.keymap.set('n', '<leader>F', [[<cmd>lua require('vscode').action('workbench.action.findInFiles')<cr>]])
-  vim.keymap.set('n', '<leader>rn', "<Cmd>call VSCodeNotify('editor.action.rename')<CR>")
-  vim.keymap.set('n', '<leader>ca', "<Cmd>call VSCodeNotify('editor.action.quickFix')<CR>")
-  vim.keymap.set('n', 'gr', "<Cmd>call VSCodeNotify('editor.action.referenceSearch.trigger')<CR>")
-  vim.keymap.set('n', 'gI', "<Cmd>call VSCodeNotify('editor.action.goToImplementation')<CR>")
-  vim.keymap.set('n', '<leader>D', "<Cmd>call VSCodeNotify('editor.action.goToTypeDefinition')<CR>")
-  vim.keymap.set('n', 'gD', "<Cmd>call VSCodeNotify('editor.action.goToDeclaration')<CR>")
-
-  -- Diagnostic keymaps
-  vim.keymap.set('n', '[d', "<Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>")
-  vim.keymap.set('n', ']d', "<Cmd>call VSCodeNotify('editor.action.marker.next')<CR>")
-  vim.keymap.set('n', '<leader>e', "<Cmd>call VSCodeNotify('editor.action.showHover')<CR>")
-
-  -- Keep undo/redo lists in sync with VsCode
-  vim.keymap.set('n', 'u', "<Cmd>call VSCodeNotify('undo')<CR>")
-  vim.keymap.set('n', '<C-r>', "<Cmd>call VSCodeNotify('redo')<CR>")
-
-  -- Navigate VSCode tabs like lazyvim buffers
-  vim.keymap.set('n', '<S-h>', "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
-  vim.keymap.set('n', '<S-l>', "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
-end
+-- [[ VSCode specific overrides ]]
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'VeryLazy',
+  group = vim.api.nvim_create_augroup('VSCode', { clear = true }),
+  callback = function()
+    vim.api.nvim_exec_autocmds('User', { pattern = 'VSCodeOverrides', modeline = false })
+  end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
