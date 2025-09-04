@@ -5,17 +5,17 @@ vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
 -- [[ Setting options ]]
--- See `:help vim.opt`
+-- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
 -- Whitespace
-vim.opt.wrap = false
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.list = true
-vim.opt.backspace = 'indent,eol,start'
+vim.o.wrap = false
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.o.list = true
+vim.o.backspace = 'indent,eol,start'
 
 -- Highlight problematic whitespace
 vim.opt.listchars = {
@@ -26,38 +26,38 @@ vim.opt.listchars = {
 }
 
 -- Highlight current line
-vim.opt.cursorline = true
+vim.o.cursorline = true
 
 -- Make line numbers default
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
 
 -- Enable break indent
-vim.opt.breakindent = true
+vim.o.breakindent = true
 
 -- Save undo history
-vim.opt.undofile = true
+vim.o.undofile = true
 
 -- Search
-vim.opt.grepprg = 'rg --vimgrep'
+vim.o.grepprg = 'rg --vimgrep'
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.o.signcolumn = 'yes'
 
 -- Decrease update time
-vim.opt.updatetime = 250
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
+vim.o.updatetime = 250
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 -- No gui cursor
-vim.opt.guicursor = ''
+vim.o.guicursor = ''
 
 -- NOTE: You should make sure your terminal supports this
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
