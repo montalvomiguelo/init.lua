@@ -109,7 +109,6 @@ local enabled = {
   'lazy.nvim',
   'vim-surround',
   'vim-unimpaired',
-  'vscode',
 }
 
 -- [[ VSCode overrides ]]
