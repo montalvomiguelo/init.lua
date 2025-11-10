@@ -371,24 +371,6 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-        },
-      }
-
-      vim.cmd.colorscheme 'tokyonight-moon'
-    end,
-    version = '3.0.1',
-  },
-
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
