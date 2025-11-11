@@ -17,14 +17,6 @@ vim.o.expandtab = true
 vim.o.list = true
 vim.o.backspace = 'indent,eol,start'
 
--- Highlight problematic whitespace
-vim.opt.listchars = {
-  tab = '  ', -- a tab should display as "  "
-  trail = '.', -- show trailing spaces as dots
-  extends = '>', -- The character to show in the last column when wrap is off and the line continues beyond the right of the screen
-  precedes = '<', -- The character to show in the last column when wrap is off and the line continues beyond the left of the screen
-}
-
 -- Highlight current line
 vim.o.cursorline = true
 
@@ -52,9 +44,6 @@ vim.o.signcolumn = 'yes'
 vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
-
--- No gui cursor
-vim.o.guicursor = ''
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
