@@ -5,8 +5,10 @@ return {
     vim.g.copilot_filetypes = {
       rust = false,
       java = false,
-      cppp = false,
+      cpp = false,
       python = false,
+      kotlin = false,
+      c = false,
     }
   end,
 }
