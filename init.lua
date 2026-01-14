@@ -386,7 +386,7 @@ require('lazy').setup({
   {
     'montalvomiguelo/ack.vim',
     keys = {
-      { '<leader>f', ':Ack!<Space>', mode = 'n', desc = '[S]earch by [G]rep' },
+      { '<leader>a', ':Ack!<Space>', mode = 'n', desc = '[S]earch by [G]rep' },
     },
     init = function()
       vim.g.ackprg = 'rg --vimgrep'
