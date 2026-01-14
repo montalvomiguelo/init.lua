@@ -255,7 +255,7 @@ require('lazy').setup({
     cmd = { 'ConformInfo' },
     keys = {
       {
-        '<leader>f',
+        '<leader>=',
         function()
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
@@ -386,7 +386,7 @@ require('lazy').setup({
   {
     'montalvomiguelo/ack.vim',
     keys = {
-      { '<leader>F', ':Ack!<Space>', mode = 'n', desc = '[S]earch by [G]rep' },
+      { '<leader>f', ':Ack!<Space>', mode = 'n', desc = '[S]earch by [G]rep' },
     },
     init = function()
       vim.g.ackprg = 'rg --vimgrep'
