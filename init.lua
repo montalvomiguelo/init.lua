@@ -103,22 +103,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---[[ VSCode plugins ]]
-local enabled = {
-  'lazy.nvim',
-  'vim-surround',
-  'vim-unimpaired',
-}
-
--- [[ VSCode overrides ]]
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'VeryLazy',
-  group = vim.api.nvim_create_augroup('VSCode', { clear = true }),
-  callback = function()
-    vim.api.nvim_exec_autocmds('User', { pattern = 'VSCodeOverrides', modeline = false })
-  end,
-})
-
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -213,13 +197,6 @@ require('lazy').setup({
         -- pyright = {},
         -- rust_analyzer = {},
         -- ts_ls = {},
-
-        lua_ls = {
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-          },
-        },
       }
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -231,6 +208,35 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+      -- Special Lua Config, as recommended by neovim help docs
+      vim.lsp.config('lua_ls', {
+        on_init = function(client)
+          if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
+              return
+            end
+          end
+
+          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+              version = 'LuaJIT',
+              path = { 'lua/?.lua', 'lua/?/init.lua' },
+            },
+            workspace = {
+              checkThirdParty = false,
+              -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
+              --  See https://github.com/neovim/nvim-lspconfig/issues/3189
+              library = vim.api.nvim_get_runtime_file('', true),
+            },
+          })
+        end,
+        settings = {
+          Lua = {},
+        },
+      })
+      vim.lsp.enable 'lua_ls'
 
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
@@ -454,18 +460,6 @@ require('lazy').setup({
         'zipPlugin',
       },
     },
-  },
-
-  -- VSCode specific config
-  checker = { enabled = not vim.g.vscode, notify = false },
-  change_detection = { enabled = not vim.g.vscode },
-  defaults = {
-    cond = function(plugin)
-      if vim.g.vscode then
-        return vim.tbl_contains(enabled, plugin.name) or plugin.vscode
-      end
-      return true
-    end,
   },
 })
 
