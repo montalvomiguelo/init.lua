@@ -199,9 +199,6 @@ require('lazy').setup({
         -- ts_ls = {},
       }
 
-      -- blink.cmp supports additional completion capabilities, so broadcast that to servers
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
