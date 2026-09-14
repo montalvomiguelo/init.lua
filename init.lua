@@ -199,9 +199,8 @@ require('lazy').setup({
         -- ts_ls = {},
       }
 
-      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      -- blink.cmp supports additional completion capabilities, so broadcast that to servers
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
@@ -299,66 +298,76 @@ require('lazy').setup({
 
   {
     -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    'saghen/blink.cmp',
+    version = '1.*',
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      {
-        'L3MON4D3/LuaSnip',
-        build = (function()
-          -- Build Step is needed for regex support in snippets.
-          -- This step is not supported in many windows environments.
-          -- Remove the below condition to re-enable on windows.
-          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-            return
-          end
-          return 'make install_jsregexp'
-        end)(),
-        dependencies = {
-          -- Adds a number of user-friendly snippets
-          {
-            'rafamadriz/friendly-snippets',
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
+      'rafamadriz/friendly-snippets',
+      { 'nvim-mini/mini.icons', version = '*', opts = { style = 'ascii' } },
+    },
+    event = { 'InsertEnter', 'CmdlineEnter' },
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      snippets = {
+        preset = 'default',
+      },
+
+      completion = {
+        menu = {
+          draw = {
+            treesitter = { 'lsp' },
+            components = {
+              kind_icon = {
+                text = function(ctx)
+                  local icon = require('mini.icons').get('lsp', ctx.kind)
+                  return icon
+                end,
+                highlight = function(ctx)
+                  local _, hl = require('mini.icons').get('lsp', ctx.kind)
+                  return hl
+                end,
+              },
+              kind = {
+                highlight = function(ctx)
+                  local _, hl = require('mini.icons').get('lsp', ctx.kind)
+                  return hl
+                end,
+              },
+            },
+          },
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+      },
+
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      cmdline = {
+        keymap = {
+          preset = 'cmdline',
+          ['<Right>'] = false,
+          ['<Left>'] = false,
+        },
+        completion = {
+          list = { selection = { preselect = false } },
+          menu = {
+            auto_show = function(ctx)
+              return vim.fn.getcmdtype() == ':'
             end,
           },
         },
       },
-      'saadparwaiz1/cmp_luasnip',
 
-      -- Adds LSP completion capabilities
-      'hrsh7th/cmp-nvim-lsp',
+      keymap = {
+        preset = 'enter',
+        ['<C-y>'] = { 'select_and_accept' },
+      },
     },
-    config = function()
-      -- [[ Configure nvim-cmp ]]
-      -- See `:help cmp`
-      local cmp = require 'cmp'
-      local luasnip = require 'luasnip'
-      luasnip.config.setup {}
-
-      cmp.setup {
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert {
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete {},
-          ['<C-y>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-          },
-        },
-        sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-        },
-      }
-    end,
   },
 
   {
