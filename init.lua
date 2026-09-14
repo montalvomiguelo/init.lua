@@ -23,9 +23,6 @@ vim.o.cursorline = true
 vim.o.number = true
 vim.o.relativenumber = true
 
--- Enable break indent
-vim.o.breakindent = true
-
 -- Save undo history
 vim.o.undofile = true
 
