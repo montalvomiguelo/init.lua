@@ -15,7 +15,6 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.list = true
-vim.o.backspace = 'indent,eol,start'
 
 -- Highlight current line
 vim.o.cursorline = true
@@ -42,7 +41,6 @@ vim.o.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 -- NOTE: You should make sure your terminal supports this
@@ -50,20 +48,7 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Clear search result highlight
-vim.keymap.set('n', '<C-l>', '<Cmd>nohlsearch<CR><C-l>', { silent = true, noremap = true })
-
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', function()
-  vim.diagnostic.jump { count = -1 }
-end, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', function()
-  vim.diagnostic.jump { count = 1 }
-end, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
