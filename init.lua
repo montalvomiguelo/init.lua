@@ -19,6 +19,12 @@ vim.o.list = true
 -- Highlight current line
 vim.o.cursorline = true
 
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.o.scrolloff = 4
+
+-- Columns of context
+vim.o.sidescrolloff = 8
+
 -- Make line numbers default
 vim.o.number = true
 vim.o.relativenumber = true
