@@ -3,9 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  {
-    'tpope/vim-surround',
-    'tpope/vim-unimpaired',
-    'bronson/vim-trailing-whitespace',
-  },
+  'tpope/vim-surround',
+  'tpope/vim-unimpaired',
+  'bronson/vim-trailing-whitespace',
 }
