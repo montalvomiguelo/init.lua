@@ -333,22 +333,6 @@ require('lazy').setup({
         },
       },
 
-      cmdline = {
-        keymap = {
-          preset = 'cmdline',
-          ['<Right>'] = false,
-          ['<Left>'] = false,
-        },
-        completion = {
-          list = { selection = { preselect = false } },
-          menu = {
-            auto_show = function(ctx)
-              return vim.fn.getcmdtype() == ':'
-            end,
-          },
-        },
-      },
-
       keymap = {
         preset = 'enter',
         ['<C-y>'] = { 'select_and_accept' },
