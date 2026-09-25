@@ -15,6 +15,8 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.list = true
+vim.o.linebreak = true -- Wrap lines at convenient points
+vim.o.shiftround = true
 
 -- Highlight current line
 vim.o.cursorline = true
@@ -31,6 +33,16 @@ vim.o.relativenumber = true
 
 -- Save undo history
 vim.o.undofile = true
+
+-- Confirm to save changes before exiting modified buffer
+vim.o.confirm = true
+
+-- Command-line completion mode
+vim.o.wildmode = 'longest:full,full'
+
+-- Configure how new splits should be opened
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Search
 vim.o.grepprg = 'rg --vimgrep'
@@ -51,6 +63,10 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
@@ -62,6 +78,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
   callback = function()
     vim.hl.on_yank()
+  end,
+})
+
+-- wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('wrap_spell', { clear = true }),
+  pattern = { 'text', 'plaintex', 'typst', 'gitcommit', 'markdown' },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
   end,
 })
 
