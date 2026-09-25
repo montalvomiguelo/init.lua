@@ -304,12 +304,6 @@ require('lazy').setup({
                   return hl
                 end,
               },
-              kind = {
-                highlight = function(ctx)
-                  local _, hl = require('mini.icons').get('lsp', ctx.kind)
-                  return hl
-                end,
-              },
             },
           },
         },
